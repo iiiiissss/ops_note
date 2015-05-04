@@ -1,0 +1,56 @@
+- name: Install Packages Needed To Compile PHP 7
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - git
+    - autoconf 
+    - bison 
+    - libxml2-dev 
+    - libbz2-dev 
+    - libmcrypt-dev 
+    - libcurl4-openssl-dev 
+    - libltdl-dev 
+    - libpng-dev 
+    - libpspell-dev
+    - libreadline6
+    - libreadline6-dev
+
+- name: Clone PHP7
+  sudo: false
+  git: repo=https://git.php.net/repository/php-src.git dest=/home/vagrant/php-src
+
+- name: Create a few directories
+  file: path=/etc/php7/{{ item }} recurse=true state=directory
+  with_items:
+    - conf.d
+    - cli/conf.d
+    - fpm/conf.d
+    - /usr/local/php7
+
+- name: Run buildconf
+  sudo: false
+  shell: ./buildconf
+  args:
+    chdir: /home/vagrant/php-src 
+
+- name: Configure the build.
+  sudo: false
+  shell: ./configure {{ php7_configure_string }} 
+  args:
+    chdir: /home/vagrant/php-src
+
+- name: Configure the cli build.
+  sudo: false
+  shell: ./configure {{ php7_cli_configure_string }} 
+  args:
+    chdir: /home/vagrant/php-src
+
+- name: Build PHP7
+  sudo: false
+  shell: make
+  args:
+    chdir: /home/vagrant/php-src
+
+- name: Install PHP7
+  shell: make install
+  args:
+    chdir: /home/vagrant/php-src
