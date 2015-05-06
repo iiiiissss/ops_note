@@ -3,13 +3,14 @@ sudo apt-get install mysql-server mysql-client
 
 #密码输入帐号密码
 
-**nginx**
+**nginx** sudo nginx -t     sudo service nginx reload  
 apt-get install nginx
-/etc/init.d/nginx start   / reload
-
+sudo /etc/init.d/nginx reload    #start 
+sudo service nginx reload
 #document root /usr/share/nginx/html   localhost可以访问
 #vi /etc/nginx/nginx.conf  vi /etc/nginx/sites-available/default
 error_log /var/log/nginx/error.log;
+(sudo /etc/init.d/nginx configtest)
 
 location ~ \.php$ {
                 try_files $uri =404;
@@ -20,12 +21,20 @@ location ~ \.php$ {
         }
 
 
-**php**
+**php**  sudo service php5-fpm restart
 sudo apt-get install php5-fpm php5-cli php5-mysql
 #script /etc/init.d/php5-fpm that runs a FastCGI server on port 9000
-#/etc/init.d/php5-fpm reload
+#sudo /etc/init.d/php5-fpm reload
+kill/reload
+
+sudo service php5-fpm stop   #status  start
+
+pid=/var/run/php5-fpm.pid
+kill -INT `cat /var/run/php5-fpm.pid`
+kill -USR2 `cat /var/run/php5-fpm.pid`
 
 apt-get install php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+查看模块: php -m|grep openssl
 
 **PHP-FPM Use A Unix Socket**
 vi /etc/php5/fpm/pool.d/www.conf
