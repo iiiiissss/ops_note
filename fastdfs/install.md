@@ -72,5 +72,7 @@ cp modules/fastdfs_client.so  /usr/lib/php/201...
 cp fastdfs_client.ini /etc/php5/php-fpm
 
 **nginx**
+http_image_filter_module
+fastdfs-nginx-module
 
 

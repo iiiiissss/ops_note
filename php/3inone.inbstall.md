@@ -1,3 +1,7 @@
+**常用管理**
+sudo nginx -t     sudo service nginx reload  
+sudo service php5-fpm restart
+mysqld
 **mysql**
 sudo apt-get install mysql-server mysql-client
 
