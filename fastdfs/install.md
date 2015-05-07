@@ -73,6 +73,6 @@ cp fastdfs_client.ini /etc/php5/php-fpm
 
 **nginx**
 http_image_filter_module
-fastdfs-nginx-module
+fastdfs-nginx-module : https://github.com/happyfish100/fastdfs-nginx-module/archive/master.zip
 
-
+--add-module=/home/ubuntu/src/nginxall/fastdfs-nginx-module/src

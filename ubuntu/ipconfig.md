@@ -18,4 +18,4 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 
 /etc/resolv.conf 是自动文件
-/etc/init.d/networking restart
+sudo /etc/init.d/networking restart

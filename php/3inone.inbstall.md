@@ -5,7 +5,7 @@ mysqld
 **mysql**
 sudo apt-get install mysql-server mysql-client
 
-#密码输入帐号密码
+#密码输入帐号密码 (dos2unix file.sh)
 
 **nginx** sudo nginx -t     sudo service nginx reload  
 apt-get install nginx
