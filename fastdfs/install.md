@@ -33,9 +33,9 @@ ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
 
 
-**tracker**
+**tracker** /data/apps/webdata/fastdfs # ln -s /data/apps/webdata/fastdfs/data /data/apps/webdata/fastdfs/data/M00
 /etc/fdfs/tracker.conf
-base_path=/data/service/fastdfs
+base_path=/data/service/fastdfs  
 启动:/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf start
 
 **storage**
@@ -45,7 +45,7 @@ tracker_server=192.168.1.36:22122
 store_path0=/data/service/fastdfs
 
 client.conf 中同样要修改
-base_path=/usr/fastdfs #用于存放日志。
+base_path=/data/service/fastdfs #用于存放日志。
 tracker_server=192.168.1.36:22122 #指定tracker服务器地址
 
 ln -s /data/service/fastdfs/data /data/service/fastdfs/data/M00
@@ -62,14 +62,19 @@ fdfs_test /etc/fdfs/client.conf upload ~/01.jpg
 
 
 
-**php client**
-#phpize 在 php5-dev
+**php client** /usr/local/php/lib/php/extensions  # ./configure  --with-php-config=/usr/local/php/bin/php-config
+#phpize (在php5-dev) sudo apt-get install autoconf # /data/services/php-5.5.24.1/bin/phpize 
+#sudo apt-get install autoconf
 phpize
 ./configure  # --with-php-config=/etc/php5/fpm
 make
 make install
 cp modules/fastdfs_client.so  /usr/lib/php/201...
+
+#fastdfs_client.ini 改path
 cp fastdfs_client.ini /etc/php5/php-fpm
+## sudo aptitude install libmcrypt-dev
+##sudo cp /data/services/fastdfs/fastdfs-5.05/php_client/fastdfs_client.ini /data/services/php-5.5.24.1/conf
 
 **nginx**
 http_image_filter_module
