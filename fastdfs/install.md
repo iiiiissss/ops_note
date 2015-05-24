@@ -17,6 +17,7 @@ mime.types   //文件类型配置文件
 **all ()**
 安装libfastcommon类库
 wget https://github.com/happyfish100/libfastcommon/archive/master.zip
+apt-get install zip
 unzip master.zip
 cd libfastcommon-master
 ./make.sh

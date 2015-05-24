@@ -1,3 +1,4 @@
+启动: /usr/bin/rsync --daemon
 
 **不同模式**
 本地:

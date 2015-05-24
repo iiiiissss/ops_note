@@ -2,6 +2,19 @@
 服务器B   192.168.1.110
 Mysql版本：5.1.26
 System OS：CentOS release 5.4
+
+授权后 必须先测试联通性
+
+grant replication slave,file on *.* to 'replication'@'192.168.200.%' identified by 'yf*k|r57J=d';
+flush privileges;
+
+
+CHANGE MASTER TO MASTER_HOST='192.168.0.149',MASTER_USER='replication',MASTER_PASSWORD=123456;
+server-id=2 #唯一
+log-bin=mysql-bin
+auto-increment-increment=2
+auto-increment-offset=1
+
  
 二、主主配置过程
  1、创建同步用户：
