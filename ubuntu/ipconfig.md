@@ -19,3 +19,5 @@ nameserver 8.8.4.4
 
 /etc/resolv.conf 是自动文件
 sudo /etc/init.d/networking restart
+
+sudo ifdown eth0 && sudo ifup eth0
