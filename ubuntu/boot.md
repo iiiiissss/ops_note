@@ -1,3 +1,18 @@
+mount cdrom/unbuntu...ios  /cdrom
+
+sudo 无密码提示:
+/etc/sudoers
+%sudo   ALL=(ALL) NOPASSWD: NOPASSWD: ALL
+
+pkexec chmod 0440 /etc/sudoers
+
+
+mount -o remount, rw /
+
+自动登录: 
+vi /etc/init/tty1.conf
+exec /bin/login -f USERNAME < /dev/tty1 > /dev/tty1 2>&1
+ 
  过grub引导:
 /etc/default/grub
 注释掉这行 GRUB_HIDDEN_TIMEOUT_QUIET=true
