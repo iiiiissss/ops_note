@@ -1,11 +1,14 @@
+scp  -P 9989  root@192.168.8.138:/home/ligh/index.php    root@192.168.8.139:/root
+
 
 ls ~/.ssh/
-
+ssh-rsa 
 ssh-keygen -t rsa -P ''
 
 cat id_rsa.pub >> .ssh/authorized_keys
 
 /etc/ssh/ssh_config
+
 vi /etc/ssh/sshd_config
 RSAAuthentication yes # 启用 RSA 认证
  PubkeyAuthentication yes # 启用公钥私钥配对认证方式

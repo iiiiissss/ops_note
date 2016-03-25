@@ -1,3 +1,5 @@
+apt-get  install rsync
+
 启动: /usr/bin/rsync --daemon
 
 **不同模式**
@@ -10,8 +12,6 @@ rsync -av ./from root@192.168.1.149:/to
 
 
 服务器模式:
-
-
 
 
 查看远程/本地:

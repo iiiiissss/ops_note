@@ -1,3 +1,8 @@
+
+sudo apt-get install openssh-server
+ssh-contact-service 
+
+
 # Package generated configuration file
 # See the sshd_config(5) manpage for details
 

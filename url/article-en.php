@@ -1,0 +1,1 @@
+https://davidcel.is/posts/the-story-of-my-redis-database/
