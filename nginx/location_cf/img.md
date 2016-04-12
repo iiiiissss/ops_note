@@ -1,3 +1,11 @@
+
+location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|otf|ttf) {
+    expires 1y;
+}
+
+
+
+
 location ~* \.(?:ico|css|js|gif|jpe?g|png)$ {
     expires 30d;
     add_header Pragma public;
