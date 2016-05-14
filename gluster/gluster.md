@@ -2,7 +2,6 @@ sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:gluster/glusterfs-3.5
 sudo apt-get update
 sudo apt-get install glusterfs-server
-
 sudo apt-get install xfsprogs
 
 #mkfs.xfs -i size=512 /dev/sdb1
@@ -29,6 +28,26 @@ gluster volume start testfilestore #stop delete
 mount -t glusterfs test1:/testfilestore /mnt
 mkdir -p /mnt/glusterfs/testfilestore
 mount -t glusterfs test1:/testfilestore /mnt/glusterfs/testfilestore
+
+umount -t glusterfs /mnt/glusterfs/testfilestore
+sudo mount -t glusterfs -o backupvolfile-server=test2 test1:/testfilestore /mnt/glusterfs/testfilestore
+
+# mount -t glusterfs -o backupvolfile-server=volfile_server2,use-readdirp=no,volfile-max-fetch-attempts=2,log-level=WARNING,log-file=/var/log/gluster.log server1:/test-volume /mnt/glusterfs
+
+增减卷,注意replica 增加卷后要修复
+sudo gluster volume remove-brick testfilestore replica 1 test1:/data/gluster/testfilestore force
+sudo gluster volume add-brick testfilestore replica 2 test1:/data/gluster/testfilestore force
+
+
+sudo mount -t glusterfs -o backupvolfile-server=test2,volfile-max-fetch-attempts=6 test1:/testfilestore /mnt/glusterfs/testfilestore
+
+sudo mount -t glusterfs -o backupvolfile-server=test2,use-readdirp=no,volfile-max-fetch-attempts=6,log-level=WARNING,log-file=/var/log/gluster.log test1:/testfilestore /mnt/glusterfs/testfilestore
+
+
+mount -t glusterfs -obackup-volfile-servers=<server2>: \
+          <server3>:...:<serverN> <server1>:/<volname> <mount_point>
+mount -t glusterfs -o backupvolfile-server=volfile_server2,use-readdirp=no,volfile-max-fetch-attempts=2,log-level=WARNING,log-file=/var/log/gluster.log server1:/test-volume /mnt/glusterfs
+
 
 /usr/sbin/glusterd -p /var/run/glusterd.pid
 /usr/sbin/glusterfs --volfile-server=test1 --volfile-id=/testfilestore /mnt/glusterfs/testfilestore

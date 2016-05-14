@@ -1,0 +1,1 @@
+cat xx.log | awk '{print $1}' | sort | uniq -C | sort -nr | head -n 100

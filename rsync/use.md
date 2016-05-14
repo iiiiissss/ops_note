@@ -2,6 +2,17 @@ apt-get  install rsync
 
 启动: /usr/bin/rsync --daemon
 
+/usr/bin/rsync --daemon --config=/etc/rsyncd/rsyncd.conf
+
+
+
+
+/usr/bin/rsync -avzP  --progress   --password-file=/etc/rsyncd/rsyncd.secrets   /data/deploy/mcelf-web/www/  ubuntu@web1::mcelf-web
+
+
+/usr/bin/rsync -avzP  --progress   --password-file=/etc/rsyncd/rsync.test1   /root/agui/testrsy.txt ops@test1::datatest
+
+
 **不同模式**
 本地:
 rsync -av ./from ./to  #复制含目录
