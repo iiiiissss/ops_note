@@ -16,7 +16,8 @@ ansible webservers -m service -a "name=httpd state=restarted"
 复制文件(copy)
 
  --sudo --ask-sudo-pass
-文件权限 改/增/删(file)
+文件权限 改/增/删(file)(有/ ,只复制目录下的文件, /* 复制可见文件 )
+ansible noinit -m copy -a "src=/home/ubuntu/send_files/ dest=/data/services" -u ubuntu --sudo
 ansible webservers -m file -a "dest=/srv/foo/b.txt mode=600 owner=mdehaan group=mdehaan"
 ansible webservers -m file -a "dest=/path/to/c mode=755 owner=mdehaan group=mdehaan state=directory"
 ansible webservers -m file -a "dest=/path/to/c state=absent"
