@@ -35,6 +35,10 @@ pre-down ifenslave -d bond0 eth0 eth1
 2个类别的绑定/etc/modules 中的内容改为：
 bonding mode=1 miimon=100 max_bonds=2
 
+修改网卡名称:
+/etc/udev/rules.d/70-persistent-net.rules
+增加网卡:
+dmesg|grep eth
 
 # The loopback networkinterface
 auto lo

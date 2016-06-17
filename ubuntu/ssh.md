@@ -1,5 +1,9 @@
-scp  -P 9989  root@192.168.8.138:/home/ligh/index.php    root@192.168.8.139:/root
+http://wiki.ubuntu.org.cn/AdvancedOpenSSH
 
+
+/etc/ssh/sshd_config配置文件中的UseDNS设置为yes，修改为no
+
+scp  -P 9989  root@192.168.8.138:/home/ligh/index.php    root@192.168.8.139:/root
 
 ls ~/.ssh/
 ssh-rsa 
@@ -48,3 +52,37 @@ Host hdu-one
 /etc/ssh/ssh_host_dsa_key：SSH2用的DSA私钥
 
 /etc/ssh/ssh_host_dsa_key.pub：SSH2用的DSA公钥
+
+
+可以在/etc/ssh/sshd_config中增加AllowUsers:username(可以多个,空格分开)给普通用户增加ssh权限
+也可以设置允许和拒绝ssh的用户/用户组： 
+DenyUsers:username,DenyGroups:groupname
+优先级如下： 
+DenyUsers:username 
+AllowUsers:username 
+DenyGroups:groupname 
+AllowGroups:groupname
+
+
+
+代理模式:
+
+直接编辑~/.ssh/config文件，增加ProxyCommand选项，像下面这样：
+Host target.machine
+    User          targetuser
+    HostName      target.machine
+    ProxyCommand  ssh proxyuser@proxy.machine nc %h %p 2> /dev/null
+注意：~/.ssh/config文件有很多amazing的选项，具体可以参考这里：http://blog.tjll.net/ssh-kung-fu
+现在，只需要通过下面这样简单的语句登陆远程计算机：
+ssh target.machine
+还可以直接SCP过去，跳板机完全透明：
+scp ToCopy.txt target.machine:~
+
+
+不适合编辑~/.ssh/ssh_config文件，需要用脚本进行封装，因此，我像下面这样使用ProxyCommand：
+直接跳到远程计算机
+  ssh -o "ProxyCommand ssh -p 1098 lmx@proxy.machine nc -w 1 %h %p" -p 1098 lmx@target.machine
+拷贝文件到远程计算机
+  scp -o "ProxyCommand ssh -p 1098 lmx@proxy.machine nc -w 1 %h %p" -P 1098 -r lmx@target.machine:~/rdsAgent .
+在远程计算机执行命令
+  ssh -o "ProxyCommand ssh -p 1098 lmx@proxy.machine nc -w 1 %h %p" -p 1098 lmx@target.machine 'ip a'

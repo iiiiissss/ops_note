@@ -2,6 +2,45 @@ sudo apt-get install ipvsadm
 sudo ipvsadm 查看是否安装成功。
 
 
+ifconfig lo:1 192.168.1.169 netmask 255.255.255.255 别忘了加到rc.local里面
+route add defaule gw 192.168.1.1
+
+ifconfig lo:1 27.36.119.114 netmask 255.255.255.0
+
+
+27.36.119.114
+route add gw
+
+ifconfig lo:1 192.168.1.169 netmask 255.255.255.255
+
+ifconfig lo:1 119.147.139.126 netmask 255.255.255.0
+
+ifconfig lo:1 119.147.139.127 netmask 255.255.255.0
+
+route add default gw 119.147.139.1
+
+ifconfig lo:1 27.36.119.114 netmask 255.255.255.0
+
+切换成VIP的地址时有没有向交换机做arp 广播，无广播交换机是没有arp 认证的也就是说你的VIP在交换机里是不合法的?
+
+vip:
+ifconfig eth0:0 192.168.57.200 netmask 255.255.255.255 broadcast 192.168.57.255 up
+
+ifconfig em2:2 119.147.139.126 netmask 255.255.255.0 broadcast 119.147.139.255 up
+
+ifconfig lo:1 119.147.139.127 netmask 255.255.255.0 broadcast 119.147.139.255 up
+route add gw 119.147.139.1
+
+ifconfig em2:2 27.36.119.114 netmask 255.255.255.0 broadcast 27.36.119.255 up
+ifconfig em2:2 119.147.139.127 netmask 255.255.255.0 broadcast 27.36.119.255 up
+
+route add -net 119.147.139.0  netmask 255.255.255.0 dev em2
+
+route add -net 192.168.224.0 netmask 255.255.255.0 dev em2
+
+192.168.57.200
+
+
 ipvsadm 配置
 可通过下面语句配置ipvsadm是否随机启动，以none/master/backup/both四种的哪一种方式
 sudo dpkg-reconfigure ipvsadm
@@ -40,12 +79,25 @@ https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html
 允许绑定vip
 echo 1 > /proc/sys/net/ipv4/ip_nonlocal_bind
 Permanent:Add this to /etc/sysctl.conf:
+net.ipv4.ip_forward = 1
 net.ipv4.ip_nonlocal_bind = 1
+
 sysctl -p
 
 
 
 
+
+#
+/sbin/sysctl -q -w net.ipv4.conf.all.arp_announce=2
+/sbin/sysctl -q -w net.ipv4.conf.all.arp_filter=2
+
+#set lvs
+/sbin/ipvsadm -A -t $VIP:7003 -s rr
+/sbin/ipvsadm -a -t $VIP:7003 -r $RIP1:7003 -g
+
+/sbin/ipvsadm -A -t 119.147.139.126:80 -s rr
+/sbin/ipvsadm -a -t 119.147.139.126:80 -r 119.147.139.138:80 -g
 
 
 
