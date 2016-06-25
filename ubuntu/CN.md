@@ -1,12 +1,13 @@
 locale -a
-
 Œﬁzh-CN ‘Ú
-cd /usr/share/locales 
-sudo ./install-language-pack zh_CN
+sudo /usr/share/locales/install-language-pack zh_CN
+sudo dpkg-reconfigure locales
+
 
 vi /etc/profile 
 export LANG=zh_CN.UTF-8
-sudo dpkg-reconfigure locales
+
+
 
 
 sudo locale-gen

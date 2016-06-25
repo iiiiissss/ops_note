@@ -94,6 +94,8 @@ sudo route add -net 10.6.4.0/24 dev eth1
 sudo route add -net 10.6.15.0/24 dev eth1
 
 
+查看流量:
+apt-get install iftop
 
 sudo ifup --no-act p2p1  #检查语法
 
