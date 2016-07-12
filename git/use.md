@@ -1,6 +1,9 @@
 git init
 git clone username@host:/path/to/repository newfile
 
+长期储存帐号密码
+git config --global credential.helper store
+
 
 git pull
 git reset --hard sdsfsd

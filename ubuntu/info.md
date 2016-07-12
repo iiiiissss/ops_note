@@ -17,3 +17,8 @@ sudo dmidecode|grep -P 'Maximum\s+Capacity'
 
 ÄÚ´æÆµÂÊ
 sudo dmidecode | grep -A16 "Memory Device"|grep 'Speed'
+
+
+du -h --max-depth=1 ./
+
+io
