@@ -1,3 +1,6 @@
+
+
+
 /usr/bin/python /usr/bin/supervisorctl
 /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
 
@@ -16,6 +19,10 @@ user=root
 
 
 with daemon
+
+多线程跑: stop sc1:
+process_name=sc1_%(process_num)02d
+numprocs=12
 
 
 #! /usr/bin/env bash

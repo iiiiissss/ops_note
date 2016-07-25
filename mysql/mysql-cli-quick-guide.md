@@ -322,7 +322,9 @@ dump structure only
 
     mysqldump -uroot -p --default-character-set=utf8 --no-data app_db > app_db.sql
 
-
+dump table with where
+	mysqldump -uroot -p -h172.16.18.2 db_name db_table --where=" id <10" > test.sql  
+	
 Problem: 
 
     mysqldump: Got error: 1044: Access denied for user 'bot'@'10.20.1.2' to database 'app_db' when using LOCK TABLES
@@ -340,6 +342,10 @@ restore
 
 NOTICE: *app_db* **MUST** be exists before it dump and restore.
 
+
+source
+
+mysql>source d:\wcnc_db.sql
 
 
 ## Schedule backup
