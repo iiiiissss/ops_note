@@ -22,3 +22,17 @@ sudo dmidecode | grep -A16 "Memory Device"|grep 'Speed'
 du -h --max-depth=1 ./
 
 io
+
+sudo apt-get install lm-sensors 
+sudo apt-get install sensors-applet
+After installation type the following in terminal
+
+sudo sensors-detect
+You may also need to run
+
+sudo service kmod start
+It will ask you few questions. Answer Yes for all of them. Finally to get your CPU temperature type sensors in your terminal.
+
+sensors
+
+

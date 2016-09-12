@@ -9,7 +9,12 @@ server ntp.ubuntu.com
 3.  启动NTP服务
 /etc/init.d/ntp start
 
+rdate
 
+hwclock --systohc
+
+date -s MM/DD/YY
+date -s hh:mm:ss
 
 时区配置
 /bin/cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime

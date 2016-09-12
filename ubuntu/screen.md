@@ -1,5 +1,7 @@
 detached
 
+Attached
+
 screen -ls
 
 下例显示当前有两个处于detached状态的screen会话，你可以使用screen -r <screen_pid>重新连接上：
@@ -10,6 +12,11 @@ There are screens on:
 2 Sockets in /root/.screen.
 [root@tivf18 root]# screen –r 8736
 
+
+列出状态为Attached的session id。
+screen -ls
+screen -D  -r ＜session-id>
+解释：-D -r 先踢掉前一用户，再登陆。
 
 
 C-a ?	显示所有键绑定信息
