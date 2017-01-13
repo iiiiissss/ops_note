@@ -9,6 +9,17 @@ git pull
 git reset --hard sdsfsd
 git reset --hard HEAD~3：将最近3次的提交回滚
 
+抛弃本地的修改
+git fetch --all
+git reset --hard origin/master
+git fetch
+保留本地的修改
+git merge --abort
+git reset --merge
+合并后记得一定要提交这个本地的合并
+然后在获取线上仓库
+git pull
+
 如果想放弃本地工作拷贝所做修改,可以使用git checkout file/to/path命令,
 
 git merge <branch>
