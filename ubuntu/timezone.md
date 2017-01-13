@@ -10,6 +10,11 @@ server ntp.ubuntu.com
 /etc/init.d/ntp start
 
 rdate
+apt-get install rdate
+
+rdate -s us.ntp.org.cn
+ntpdate -u time.nist.gov
+
 
 hwclock --systohc
 

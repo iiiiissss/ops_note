@@ -1,9 +1,31 @@
+16G
+sudo dd if=/dev/zero of=/mnt/swap bs=1M count=16000
+mkswap /mnt/swap
+swapon /mnt/swap
+
+永久挂载/etc/fstab:
+ /mnt/swap swap swap defaults 0 0
+ 
+ 
+ free -m命令查看效果
+ 
+ 
+删除swap:
+swapoff  /mnt/swap 
+rm -rf /mnt/swap
+
+
+
 新建swap分区:
 1,swapoff -a
 2,fdisk /dev/sdb 剔除swap分区，输入d删除swap分区，然后再n添加分区（添加时硬盘必须要有可用空间，然后再用t将新添的分区id改为82（linux swap类型），最后用w将操作实际写入硬盘（没用w之前的操作是无效的）。
 3.mkswap /dev/sdb2   #格式化swap分区
 4.swapon /dev/sdb2   #启动新的swap分区
 5,/etc/fstab:   /dev/sdb2       swap        swap        defaults        0 0
+
+
+
+
 
 增加Swap分区
 1,增加1G大小的交换分区，则命令写法如下，其中的 count 等于想要的块大小。

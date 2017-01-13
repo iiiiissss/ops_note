@@ -19,3 +19,29 @@ iostat还可以用来获取cpu部分状态值：
 
 ps -ef
 ps aux
+
+
+apt-get install sysstat
+sar -u -o test 10 3
+
+
+
+
+
+
+
+
+
+先停掉syslog
+service syslog stop
+
+打开block dump:
+echo 1 > /proc/sys/vm/block_dump
+
+多次运行，查看结果
+dmesg | egrep "READ|WRITE|dirtied" | egrep -o '([a-zA-Z]*)' | sort | uniq -c | sort -rn | head
+排前的比较占用io
+
+抓完后关掉block_dump和启动syslog:
+echo 0 > /proc/sys/vm/block_dump
+service syslog start

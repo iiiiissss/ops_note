@@ -3,6 +3,8 @@ php:  service php5-fpm reload/status/start/stop
 nginx: service nginx  configtest/start/stop/reload
 
 
+php5-fpm -t 看配置
+强制用root 启动:  php5-fpm -R
 
 INT, TERM 立刻终止
 QUIT 平滑终止

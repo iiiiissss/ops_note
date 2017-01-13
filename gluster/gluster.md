@@ -69,8 +69,10 @@ volume delete <VOLNAME> - delete volume specified by <VOLNAME>
 volume start <VOLNAME> [force] - start volume specified by <VOLNAME>
 volume stop <VOLNAME> [force] - stop volume specified by <VOLNAME>
 volume add-brick <VOLNAME> [<stripe|replica> <COUNT>] <NEW-BRICK> ... [force] - add brick to volume <VOLNAME>
+       gluster volume add-brick gv0 fs-server-3:/data/gfs fs-server-4:/data/gfs 数目要匹配模式
 volume remove-brick <VOLNAME> [replica <COUNT>] <BRICK> ... [start|stop|status|commit|force] - remove brick from volume <VOLNAME>
 volume rebalance <VOLNAME> [fix-layout] {start|stop|status} [force] - rebalance operations
+直接导致所有brick全量复制  慎用
 volume replace-brick <VOLNAME> <BRICK> <NEW-BRICK> {start [force]|pause|abort|status|commit [force]} - replace-brick operations
 volume set <VOLNAME> <KEY> <VALUE> - set options for volume <VOLNAME>
 volume help - display help for the volume command
@@ -90,6 +92,7 @@ volume statedump <VOLNAME> [nfs|quotad] [all|mem|iobuf|callpool|priv|fd|inode|hi
 volume list - list all volumes in cluster
 volume clear-locks <VOLNAME> <path> kind {blocked|granted|all}{inode [range]|entry [basename]|posix [range]} - Clear locks held on path
 peer probe <HOSTNAME> - probe peer specified by <HOSTNAME>
+	gluster peer probe 192.168.230.130
 peer detach <HOSTNAME> [force] - detach peer specified by <HOSTNAME>
 peer status - list status of peers
 peer help - Help command for peer 

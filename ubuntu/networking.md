@@ -1,3 +1,6 @@
+netstat -altnp|grep 9000
+查看端口占用
+
 多ip:
 auto lo
 iface lo inet loopback
