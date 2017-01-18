@@ -39,6 +39,10 @@ sudo gluster volume remove-brick testfilestore replica 1 test1:/data/gluster/tes
 sudo gluster volume add-brick testfilestore replica 2 test1:/data/gluster/testfilestore force
 
 
+扩容:  原有g1 g2
+gluster volume add-brick test-volume g3:/exp5 g4:/exp6 g3:/exp7 g4:/exp8 force
+
+
 sudo mount -t glusterfs -o backupvolfile-server=test2,volfile-max-fetch-attempts=6 test1:/testfilestore /mnt/glusterfs/testfilestore
 
 sudo mount -t glusterfs -o backupvolfile-server=test2,use-readdirp=no,volfile-max-fetch-attempts=6,log-level=WARNING,log-file=/var/log/gluster.log test1:/testfilestore /mnt/glusterfs/testfilestore
