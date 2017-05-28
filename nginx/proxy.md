@@ -1,3 +1,15 @@
+upstream favtomcat {
+       server 10.0.6.108:7080;
+       server 10.0.0.85:8980;
+}
+location / {
+            root   html;
+            index  index.html index.htm;
+            proxy_pass http://favtomcat;
+}
+
+
+
 server 
 {
 	listen 80;

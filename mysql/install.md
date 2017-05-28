@@ -6,6 +6,7 @@ netstat -tap | grep mysql 看端口
 
 service mysql stop / restart / start
 
+mac:  mysql.server start
 
  /etc/mysql/my.cnf   去除 bind address
 
@@ -13,8 +14,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'youpassword' WITH GRANT
 FLUSH PRIVILEGES;
 
 
-[client] [mysqld]下追加:
-default-character-set = utf8
+[mysqld]下追加:
+character_set_server = utf8
 
 show variables like '%time_zone%';
 

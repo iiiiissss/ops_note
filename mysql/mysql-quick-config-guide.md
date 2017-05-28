@@ -35,7 +35,8 @@ on remote host
     $ mysql -u root -p
     mysql> GRANT USAGE ON *.* TO root@"%" IDENTIFIED BY "<password>";
     mysql> FLUSH PRIVILEGES; 
-
+    
+update mysql.user set password=PASSWORD('111111') where user='root';
 
 on local box
    

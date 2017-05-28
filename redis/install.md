@@ -24,6 +24,8 @@ restart
 rdb文件 Redis dump 文件进行监控 rdb_last_save_time
 
 redis-cli -p 6379 -a test123
+redis-cli -h 45.342.23.1 -p 6379 -a test123
+
 先登陆后验证：
 redis-cli -p 6379
 redis 127.0.0.1:6379> auth test123

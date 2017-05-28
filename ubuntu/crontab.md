@@ -1,4 +1,8 @@
+https://crontab.guru/  在线设置
+
 日志:
+
+
 /var/log/cron.log
 
 
@@ -6,3 +10,4 @@
 
 
  /bin/sh -> dash
+

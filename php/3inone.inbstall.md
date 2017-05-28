@@ -1,3 +1,6 @@
+apt-get install php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode  php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+
+// apt-get remove php5-snmp
 **常用管理**
 sudo nginx -t     sudo service nginx reload  
 sudo service php5-fpm restart
@@ -37,7 +40,7 @@ pid=/var/run/php5-fpm.pid
 kill -INT `cat /var/run/php5-fpm.pid`
 kill -USR2 `cat /var/run/php5-fpm.pid`
 
-apt-get install php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+x
 查看模块: php -m|grep openssl
 
 **PHP-FPM Use A Unix Socket**
@@ -53,3 +56,19 @@ location ~ \.php$ {
                 fastcgi_index index.php;
                 include fastcgi_params;
         }
+
+[xdebug]
+xdebug.default_enable=on;显示默认的错误信息
+xdebug.collect_params = 1;打开收集“函数参数”的功能。将函数调用的参数值列入函数过程调用的监测信息中。此配置项的默认值为off。
+xdebug.profiler_enable=on    ;打开效能监测器
+xdebug.auto_trace=on
+xdebug.profiler_output_dir="C:\phpStudy\tmp\xdebug"
+xdebug.trace_output_dir="C:\phpStudy\tmp\xdebug"
+;zend_extension="C:\phpStudy\php\php-5.6.27-nts\ext\php_xdebug.dll"
+
+慢:
+short_open_tag
+file_get_content
+dns
+
+telnet

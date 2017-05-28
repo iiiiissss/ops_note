@@ -1,9 +1,17 @@
-#sudo apt-get install python-dev
-sudo apt-get install software-properties-common
+#sudo apt-get install python-dev software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible
 sudo apt-get install sshpass
+
+add-apt-repository ppa:ansible/ansible-2.1
+
+# Install pip.
+apt -y install python-setuptools python-dev
+easy_install pip
+# Install Ansible.
+pip install ansible  --upgrade
+
 
 #ssh-keygen
 #ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.4

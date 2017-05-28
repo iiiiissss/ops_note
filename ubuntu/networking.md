@@ -1,5 +1,34 @@
 netstat -altnp|grep 9000
+netstat -an|awk '/tcp/ {print $6}'|sort|uniq -c
+netstat -ae |grep mysql
 查看端口占用
+sudo lsof -i tcp:8080         #mac
+
+dns 清除缓存
+sudo /etc/init.d/nscd restart
+sudo aptitude install nscd
+sudo /etc/init.d/nscd restart 
+其实我们也可以直接
+sudo /etc/init.d/dns-clean start
+up
+
+vi /etc/resolvconf/resolv.conf.d/base（这个文件默认是空的）
+在里面插入：
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+如果有多个DNS就一行一个
+修改好保存，然后执行
+sudo resolvconf -u
+再看/etc/resolv.conf，最下面就多了2行：
+
+SIOCSIFFLAGS: Cannot assign requested address
+
+ifconfig em1:0 103.57.111.228/24
+route add default gw 103.57.111.230 dev em1:0
+
+curl 'https://api.ipify.org?format=json'
+
+ifconfig em1 up
 
 多ip:
 auto lo

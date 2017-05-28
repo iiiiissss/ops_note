@@ -1,5 +1,7 @@
 查看时区: date -R
 
+ntpdate -u time.nist.gov
+
 1.  安装ntp工具
 sudo apt-get install ntp
 2.  设置网络时间同步服务器

@@ -91,6 +91,7 @@ II
 
      mysql -uroot -p
      CREATE DATABASE app_db
+     CREATE DATABASE IF NOT EXISTS yourdbname DEFAULT CHARSET utf8 COLLATE utf8_general_ci
 
 
 delete database I
@@ -343,7 +344,15 @@ restore
 NOTICE: *app_db* **MUST** be exists before it dump and restore.
 
 
+SHOW FULL TABLES IN database_name WHERE TABLE_TYPE LIKE 'VIEW';
+Similarly, you can run the following SQL to get the list of all tables.
+
+SHOW FULL TABLES IN database_name WHERE TABLE_TYPE LIKE 'BASE TABLE';
+
+
+
 source
+mysql -h localhost -u root -p123456 db_name<c:/www.sql
 
 mysql>source d:\wcnc_db.sql
 

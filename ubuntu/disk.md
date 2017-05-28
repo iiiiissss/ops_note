@@ -8,6 +8,8 @@ sudo fdisk -l
 sudo fdisk /dev/sdc      //n 然后一直回车 w保存退出
 sudo mkfs.ext4 /dev/sdc1
 sudo mount /dev/sdc1 /data_disk1
+
+fusermount -uz /mnt/xxx
 mount /dev/vdb1 /data_disk1
 
 

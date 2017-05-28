@@ -6,6 +6,7 @@ sudo 无密码提示:
 
 pkexec chmod 0440 /etc/sudoers
 
+/etc/init.d/rsyslog restart
 
 mount -o remount, rw /
 

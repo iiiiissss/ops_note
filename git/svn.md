@@ -1,13 +1,15 @@
-安装软件包：
 
+
+安装软件包：
 sudo apt-get install subversion
 
 之后选择SVN服务文件及配置文件的放置位置。我放在了/srv下的svn目录。
 
+svn://guest@project-ddnas.openmobilefree.net/trunk  
+--username 
+
 cd /srv
-
 sudo mkdir svn
-
 我的svn版本仓库叫tone_src
 
 cd /srv/svn
@@ -79,3 +81,6 @@ sudo svnserve -d -r /erv/svn/
 
 如果我以 下面的方式启动 是可以的 但是当客户段提交文件的时候 会出问题，因为此时的svnserve 服务对svn版本库目录没有写的权限
 svnserve -d -r /erv/svn/
+
+强制恢复为线上版本
+svn revert  xxx.txt   

@@ -1,5 +1,10 @@
+sed -i 's/DEFINER=[^*]*\*/\*/g' mydump.sql
+mac: sed -i '' 's/DEFINER=[^*]*\*/\*/g' mydump.sql
 
+SHOW FULL TABLES IN database_name WHERE TABLE_TYPE LIKE 'VIEW';
+Similarly, you can run the following SQL to get the list of all tables.
 
+SHOW FULL TABLES IN database_name WHERE TABLE_TYPE LIKE 'BASE TABLE';
 
 
 

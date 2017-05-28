@@ -1,4 +1,15 @@
 
+php:
+sudo apt-get install php5-fpm php5-cli php5-mysql php5-redis php5-curl php5-mcrypt php5-gd
+sudo php5enmod mcrypt
+sudo service php5-fpm restart
+
+php¿ò¼Ü:
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:phalcon/stable
+sudo apt-get update
+sudo apt-get install php5-phalcon
+
 php:  service php5-fpm reload/status/start/stop
 nginx: service nginx  configtest/start/stop/reload
 
