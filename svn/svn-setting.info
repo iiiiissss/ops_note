@@ -1,0 +1,20 @@
+svn update -r 349   #指定版本
+
+svn
+http://www.jianshu.com/p/c02d8b335495
+
+svn add --force .    不会把忽略文件加入
+svn delete --keep-local [path]     忽略的同时保持本地
+svn status --no-ignore  查看含忽略的文件
+
+svn propset svn:ignore *.class .
+svn propset svn:ignore -R "*.class *.apk Thumbs.db" .
+svn propset svn:ignore -R *.class .   #子文件夹也忽略
+svn propset svn:ignore bin . # yes    前后都不能加文件夹
+
+建文件.svnignore
+bin
+*.class      
+svn propset svn:ignore -R -F .svnignore .
+
+
